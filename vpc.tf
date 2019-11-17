@@ -5,7 +5,7 @@ provider "ibm" {
 }
 
 locals {
-  BASENAME = "schematics" 
+  BASENAME = "schematics1" 
   ZONE     = "us-south-1"
 }
 
