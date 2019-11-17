@@ -35,6 +35,14 @@ resource ibm_is_subnet "subnet1" {
   vpc  = "${ibm_is_vpc.vpc.id}"
   zone = "${local.ZONE}"
   total_ipv4_address_count = 256
+  
+  timeouts {
+    create = "60m"
+    delete = "60m"
+  }
+  
+  
+  
 }
 
 data ibm_is_image "ubuntu" {
@@ -67,6 +75,10 @@ resource ibm_is_instance "vsi1" {
 resource ibm_is_floating_ip "fip1" {
   name   = "${local.BASENAME}-fip1"
   target = "${ibm_is_instance.vsi1.primary_network_interface.0.id}"
+  timeouts {
+    create = "60m"
+    delete = "60m"
+  }
 }
 
 output sshcommand {
